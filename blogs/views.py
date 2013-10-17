@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.views import generic
 
-from blogs.models import Post
+from blogs.models import Post #,Image
 
 
 class IndexView(generic.ListView):
@@ -11,7 +11,6 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_post_list'
     
     def get_queryset(self):
-    
         return Post.objects.filter(is_active=True).order_by('-pub_date')[:5]
         
         

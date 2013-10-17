@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+import settings
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -8,6 +9,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'blogging.views.home', name='home'),
     url(r'^blogs/', include('blogs.urls' , namespace="blogs")),
+    url(r'^Git/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

@@ -14,6 +14,6 @@ class Post(models.Model):
         
     
 class Image(models.Model):
-    post = models.ForeignKey(Post)
+    post = models.ForeignKey(Post, related_name="images")
     image = models.ImageField(upload_to='Images')
     image_title = models.CharField(max_length=100, blank=True)

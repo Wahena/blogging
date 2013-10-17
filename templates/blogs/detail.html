@@ -1,7 +1,11 @@
 <h1>{{ post.post_title }}</h1>
 <br />
 <p>{{ post.post_text}}</p>
+<br />
+{% for image in post.images.all %}
+    <li><a href = "{% url 'blogs:detail' post.id %}">{{ image.image}}</li>
+{% endfor %}
+<br />
+<a href ={% url 'blogs:index'%}>back</a>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-
 
