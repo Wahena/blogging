@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.views import generic
 
-from blogs.models import Post #,Image
+from blogs.models import Post 
 
 
 class IndexView(generic.ListView):
