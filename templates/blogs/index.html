@@ -1,9 +1,11 @@
-{% if latest_blog_list %}
+<h1>Lamins Blog</h1>
+
+{% if latest_post_list %}
     <ul>
-    {% for blog in latest_blog_list %}
-        <li><a href = "{% url 'blogs:detail' blog.id %}">{{ blog.blog_text }}</a></li>
+    {% for post in latest_post_list %}
+        <li><a href = "{% url 'blogs:detail' post.id %}">{{ post.post_title }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No blogs are available.</p>
+    <p>No posts are available.</p>
 {% endif %}

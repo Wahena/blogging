@@ -3,24 +3,17 @@ from django.db import models
 from django.utils import timezone
 
 # Create your models here.
-class Blog(models.Model):
-    blog_text = models.CharField(max_length = 400)
-    pub_date = models.DateTimeField('date published')
+class Post(models.Model):
+    post_title = models.CharField(max_length=200)
+    post_text = models.TextField()
+    pub_date = models.DateTimeField('date published', default=timezone.now)
+    is_active = models.BooleanField()
     
     def __unicode__(self):
-        return self.blog_text
+        return self.post_title
         
-    def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days = 1)
-    was_published_recently.admin_order_field = 'pub_date'
-    was_published_recently.boolean = True
-    was_published_recently.short_description = 'published recently?'
     
-    
-class Comment(models.Model):
-    blog = models.ForeignKey(Blog)
-    comment_text = models.CharField(max_length = 200)
-    likes = models.IntegerField(default=0)
-    
-    def __unicode__(self):
-        return self.comment_text
+class Image(models.Model):
+    post = models.ForeignKey(Post)
+    image = models.ImageField(upload_to='Images')
+    image_title = models.CharField(max_length=100, blank=True)

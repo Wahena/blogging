@@ -1,23 +1,23 @@
 from django.contrib import admin
-from blogs.models import Blog , Comment
+from blogs.models import Post , Image
 
 
 class CommentInline(admin.TabularInline):
-    model = Comment
+    model = Image
     extra = 3
     
     
 class BlogAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None,                  {'fields': ['blog_text']}),
+        (None,                  {'fields': ['post_title', 'post_text']}),
         ('Date information' ,   {'fields': ['pub_date'] , 'classes': ['collapse']}),
     ]
     inlines = [CommentInline]
-    list_display = ('blog_text' , 'pub_date' , 'was_published_recently')
+    list_display = ('post_title' , 'pub_date' , 'is_active')
     list_filter = ['pub_date']
-    search_fields = ['blog_text']
+    search_fields = ['blog_title']
     date_hierarchy = 'pub_date'
     
-admin.site.register(Blog, BlogAdmin)
+admin.site.register(Post, BlogAdmin)
 
 
