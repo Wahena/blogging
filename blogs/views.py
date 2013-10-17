@@ -11,7 +11,8 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_post_list'
     
     def get_queryset(self):
-        return Post.objects.order_by('-pub_date')[:5]
+    
+        return Post.objects.filter(is_active=True).order_by('-pub_date')[:5]
         
         
 class DetailView(generic.DetailView):
