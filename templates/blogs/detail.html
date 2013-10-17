@@ -1,0 +1,12 @@
+<h1>{{ blog.blog_text }}</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'blogs:likes' blog.id %}" method = "post">
+{% csrf_token %}
+{% for comment in blog.comment_set.all %}
+    <input type = "radio" name = "comment" id = "comment {{ forloop.counter}}" value = "{{ comment.id}}" />
+    <label for = "comment {{ forloop.counter }}">{{ comment.comment_text }}</lable><br />
+    <li> {{ comment.comment_text}}</li>
+{% endfor %}
+<input type = "submit" value="Comment" />
+</form>

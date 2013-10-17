@@ -1,0 +1,9 @@
+<h1>{{ blog.blog_text }}</h1>
+
+<ul>
+{% for comment in blog.comment_set.all %}
+    <li>{{ comment.comment_text }} -- {{ comment.likes }} likes {{ comment.likes|pluralize}}</li>
+{% endfor %}
+</ul>
+
+<a href = "{% url 'blogs:detail' blog.id %}">Like again?</a>
