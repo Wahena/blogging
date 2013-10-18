@@ -15,7 +15,7 @@ class BlogAdmin(admin.ModelAdmin):
     inlines = [ImageInline]
     list_display = ('post_title' , 'pub_date' , 'is_active')
     list_filter = ['pub_date']
-    search_fields = ['blog_title']
+    search_fields = ['post_title']
     date_hierarchy = 'pub_date'
     
 admin.site.register(Post, BlogAdmin)

@@ -1,16 +1,42 @@
-<h1>Lamins Blog</h1>
+{% load staticfiles %}
 
-{% if posts %}
-    <ul>
-    {% for post in posts %}
-        {% if post.is_active %}
-        <li><a href = "{% url 'blogs:detail' post.id %}">{{ post.post_title }}  {{ post.pub_date}}</a></li>
-        {% endif %}
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No posts are available.</p>
-{% endif %}
+<link rel="stylesheet" type="text/css" href="{% static 'blogs/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blogs/foundation.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blogs/foundation.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'blogs/normalize.css' %}" />
+
+
+
+<div class="row">
+  <div style= "background-color: green" class="small-2 large-3 columns">...</div>
+  <div style= "background-color: red" class="small-8 large-6 columns"><h1>Lamins Blog</h1></div>
+  <div style= "background-color: green" class="small-2 large-3 columns">...</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="row">
+    <div class=" small-6 small-centered large-uncentered columns">
+        {% if posts %}
+        <ul>
+        {% for post in posts %}
+            {% if post.is_active %}
+            <li><a href = "{% url 'blogs:detail' post.id %}"><em>{{ post.pub_date}}</em> &nbsp;&nbsp; <strong>{{ post.post_title }}</strong></a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+    
+    {% else %}
+        <p>No posts are available.</p>
+    {% endif %}
+</div>
+
 
 <div class="pagination">
     <span class="step-links">
