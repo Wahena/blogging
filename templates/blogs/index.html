@@ -1,11 +1,29 @@
 <h1>Lamins Blog</h1>
 
-{% if latest_post_list %}
+{% if posts %}
     <ul>
-    {% for post in latest_post_list %}
+    {% for post in posts %}
+        {% if post.is_active %}
         <li><a href = "{% url 'blogs:detail' post.id %}">{{ post.post_title }}  {{ post.pub_date}}</a></li>
+        {% endif %}
     {% endfor %}
     </ul>
 {% else %}
     <p>No posts are available.</p>
 {% endif %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if posts.has_previous %}
+            <a href="?page={{ posts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+        </span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
