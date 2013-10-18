@@ -3,7 +3,9 @@
 <p>{{ post.post_text}}</p>
 <br />
 {% for image in post.images.all %}
-    <li><a href = '{{ image.image.url }}'>{{ image.image.url }}</a></li>
+    <li>
+        
+        <a href = '{{ image.image.url }}'><img src="{{ image.image.url }}" alt="" width="200" height="100" />{{ image.image_title }}</a> </li>
 {% endfor %}
 <br />
 <a href ={% url 'blogs:index'%}>back</a>
