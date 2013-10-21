@@ -13,7 +13,7 @@ class DetailView(generic.DetailView):
     
     
 def listing(request):
-    post_list = Post.objects.filter(is_active=True)
+    post_list = Post.objects.filter(is_active=True).order_by('pub_date').reverse()
     paginator = Paginator(post_list, 5)
 
     page = request.GET.get('page')
