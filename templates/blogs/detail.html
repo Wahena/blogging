@@ -1,13 +1,42 @@
-<h1>{{ post.post_title }}</h1>
-<br />
-<p>{{ post.post_text}}</p>
-<br />
-{% for image in post.images.all %}
-    <li>
-        <a href = '{{ image.image.url }}' target="_blank"><img src="{{ image.image.url }}" alt="" width="200" height="100" />{{ image.image_title }}</a> 
-    </li>
-{% endfor %}
-<br />
-<a href ={% url 'blogs:index'%}>back</a>
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" style="background-color:yellow">
+    
+    <head>
+        <title>{{ post.post_title }}</title>
+    </head>
+    
+    <body style="background-color:yellow">
+        {% load staticfiles %}
 
+        <link rel="stylesheet" type="text/css" href="{% static 'blogs/style.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'blogs/foundation.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'blogs/foundation.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'blogs/normalize.css' %}" />
+
+        <div class="row">
+          <div style= "background-color: blue" class="small-2 large-3 columns">&nbsp;</div>
+          <div style= "text-align: center; background-color: blue" class="small-8 large-6 columns"><h1>{{ post.post_title }}</h1></div>
+          <div style= "background-color: blue" class="small-2 large-3 columns">&nbsp;</div>
+        </div>
+        <br>
+        <div class="row"> 
+            <p>{{ post.post_text}}</p>
+        
+            <br />
+            {% for image in post.images.all %}
+                <li>
+                <a href = '{{ image.image.url }}' target="_blank"><img src="{{ image.image.url }}" 
+                alt="" width="200" height="100" />{{ image.image_title }}</a> 
+                </li>
+            {% endfor %}
+            <br />
+        </div>
+        <br />
+        <div class="row">
+            <a href ={% url 'blogs:index'%}>back</a>
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        </div>    
+    </body>
+</html>
+     
