@@ -1,3 +1,10 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+
+  </head>
+
 {% load staticfiles %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'blogs/style.css' %}" />
@@ -8,48 +15,51 @@
 
 
 <div class="row">
-  <div style= "background-color: green" class="small-2 large-3 columns">...</div>
-  <div style= "background-color: red" class="small-8 large-6 columns"><h1>Lamins Blog</h1></div>
-  <div style= "background-color: green" class="small-2 large-3 columns">...</div>
+  <div style= "background-color: magenta" class="small-2 large-3 columns">...</div>
+  <div style= "text-align: center; background-color: blue" class="small-8 large-6 columns"><h1>Lamins Blog</h1></div>
+  <div style= "background-color: magenta" class="small-2 large-3 columns">...</div>
 </div>
-
-
-
+<br>
+<br>
+<br>
 
 
 
 
 
 <div class="row">
-    <div class=" small-6 small-centered large-uncentered columns">
+    <div class="small-6 small-centered large-uncentered columns">
         {% if posts %}
         <ul>
         {% for post in posts %}
             {% if post.is_active %}
-            <li><a href = "{% url 'blogs:detail' post.id %}"><em>{{ post.pub_date}}</em> &nbsp;&nbsp; <strong>{{ post.post_title }}</strong></a></li>
+            <li><a href = "{% url 'blogs:detail' post.id %}"><em>{{ post.pub_date }}</em> &nbsp;&nbsp; <strong>{{ post.post_title }}</strong></a></li>
             {% endif %}
         {% endfor %}
         </ul>
+        {% else %}
+            <p>No posts are available.</p>
+        {% endif %}
     </div>
     
-    {% else %}
-        <p>No posts are available.</p>
-    {% endif %}
+    
 </div>
+<div class="row">
+    <div class="small-5 small-centered columns">
+        <div style="text-align: center" class="pagination">
+            <span class="step-links">
+                {% if posts.has_previous %}
+                    <a href="?page={{ posts.previous_page_number }}">&lt;&lt;&lt;previous</a>
+                {% endif %}
 
+                <span class="current">
+                    Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+                </span>
 
-<div class="pagination">
-    <span class="step-links">
-        {% if posts.has_previous %}
-            <a href="?page={{ posts.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
-        </span>
-
-        {% if posts.has_next %}
-            <a href="?page={{ posts.next_page_number }}">next</a>
-        {% endif %}
-    </span>
-</div>
+                {% if posts.has_next %}
+                    <a href="?page={{ posts.next_page_number }}">next&gt;&gt;&gt;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+</div>        
