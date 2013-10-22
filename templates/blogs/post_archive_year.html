@@ -1,9 +1,3 @@
-<ul>
-    {% for date in date_list %}
-        <li>{{ date|date }}</li>
-    {% endfor %}
-</ul>
-
 <div>
     <h1>All Posts for {{ year|date:"Y" }}</h1>
     {% for obj in object_list %}
@@ -12,3 +6,4 @@
         </p>
     {% endfor %}
 </div>
+<a href ={% url 'blogs:index'%}>back to main page</a>

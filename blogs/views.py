@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.views.generic.dates import YearArchiveView
+from django.views.generic.dates import YearArchiveView, MonthArchiveView
 
 from blogs.models import Post
         
@@ -29,10 +29,16 @@ def listing(request):
     
     
 class PostYearArchiveView(YearArchiveView):
-    queryset = Post.objects.all()
+    queryset = Post.objects.filter(is_active=True)
     date_field = "pub_date"
     make_object_list = True
-    
+
+ 
+class PostMonthArchiveView(MonthArchiveView):
+    queryset = Post.objects.filter(is_active=True)
+    date_field = "pub_date"
+    make_object_list = True
+
     
     
     

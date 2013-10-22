@@ -1,12 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" style="background-color: grey">
     
     <head>
-        <title>Lamins Blog</title>
+        <title>Lamins Blogpage</title>
     </head>
     
-    <body>
+    <body style="background-color: grey">
         {% load staticfiles %}
 
         <link rel="stylesheet" type="text/css" href="{% static 'blogs/style.css' %}" />
@@ -14,50 +14,60 @@
         <link rel="stylesheet" type="text/css" href="{% static 'blogs/foundation.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'blogs/normalize.css' %}" />
 
-        <div class="row">
-          <div class="small-2 large-3 columns">&nbsp;</div>
-          <div style= "text-align: center;" class="small-8 large-6 columns"><h1>Lamins Blog</h1></div>
-          <hr>
-          <div class="small-2 large-3 columns">&nbsp;</div>
+        <div class="row" style="background-color: white">
+            <div style= "text-align: center;" class="large-12 columns">
+                <h1>Lamins Blog</h1>
+            </div>
+            <hr>
         </div>
+        <div class="sidebar">
+                <a href = "{% url 'blogs:post_year_archive' year=2013 %}">archive 2013<a/> <br />
+                <a href = "{% url 'blogs:post_year_archive' year=2014 %}">archive 2014<a/> <br />
+                <a href = "{% url 'blogs:post_month_archive' month='oct' year=2013  %}">archive Oktober 2013<a/> <br />
+            </div>
         <br>
-        <div class="row"> 
-            <div class="hide-for-small"> Herzlich willkommen auf meiner Blogseite.<br />
-            Hier finden Sie ...<br />......<br />.....<br />.....<br />.....<br />viel Spass beim stöbern...<br />
+        <div class="row"style="background-color: white"> 
+            <div> 
+                <br /><p>Herzlich willkommen auf meiner Blogseite.<br />
+                Hier finden Sie ...<br />......<br />.....<br />.....<br />.....<br />
+                viel Spass beim stöbern...</p><br />
             </div>
-            <div class="right">
-            <a href = "{% url 'blogs:post_year_archive' year=2013 %}">archive 2013<a/> <br />
-            <a href = "{% url 'blogs:post_year_archive' year=2014 %}">archive 2014<a/> <br />
+            <br /> 
+            <div style="text-align:left; text-decoration:underline">
+                <p><strong>Blogbeiträge:</strong></p>
             </div>
-            <br /><br /> 
-         <div style="text-align:left; text-decoration:underline"><strong>Blogbeiträge:</strong></div>
             <br>
-        <div class="small-6 small-centered large-uncentered columns hide-for-small">
-            {% if posts %}
-            <ul>
-            {% for post in posts %}
-                {% if post.is_active %}
-                <li><a href = "{% url 'blogs:detail' post.id %}"><em>{{ post.pub_date|date:"d.m.y - H:i" }}</em> &nbsp;&nbsp; <strong>{{ post.post_title }}</strong></a></li>
+            <div class="large-12 large-uncentered columns">
+                {% if posts %}
+                    <ul>
+                    {% for post in posts %}
+                        {% if post.is_active %}
+                            <li>
+                                <a href = "{% url 'blogs:detail' post.id %}">
+                                <em>{{ post.pub_date|date:"d.m.y - H:i" }}</em> &nbsp;&nbsp; 
+                                <strong>{{ post.post_title }}</strong></a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No posts are available.</p>
                 {% endif %}
-            {% endfor %}
-            </ul>
-            {% else %}
-                <p>No posts are available.</p>
-            {% endif %}
-        </div>
-        <div class="small-9 small-left large-uncentered columns show-for-small">
-            {% if posts %}
-            <ul>
-            {% for post in posts %}
-                {% if post.is_active %}
-                <li><a href = "{% url 'blogs:detail' post.id %}"> &nbsp;&nbsp; <strong>{{ post.post_title }}</strong></a></li>
+            </div>
+            <div class="small-9 small-left large-uncentered columns show-for-small">
+                {% if posts %}
+                    <ul>
+                    {% for post in posts %}
+                        {% if post.is_active %}
+                            <li><a href = "{% url 'blogs:detail' post.id %}"> &nbsp;&nbsp; 
+                            <strong>{{ post.post_title }}</strong></a></li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No posts are available.</p>
                 {% endif %}
-            {% endfor %}
-            </ul>
-            {% else %}
-                <p>No posts are available.</p>
-            {% endif %}
-        </div>
+            </div>
         
         </div>
         <div class="row">
@@ -78,7 +88,6 @@
                     </span>
                 </div>
             </div>
-            
         </div>   
     </body>
 </html>
