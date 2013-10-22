@@ -39,7 +39,7 @@
             <ul>
             {% for post in posts %}
                 {% if post.is_active %}
-                <li><a href = "{% url 'blogs:detail' post.id %}"><em>{{ post.pub_date }}</em> &nbsp;&nbsp; <strong>{{ post.post_title }}</strong></a></li>
+                <li><a href = "{% url 'blogs:detail' post.id %}"><em>{{ post.pub_date|date:"d.M.Y - H:i" }}</em> &nbsp;&nbsp; <strong>{{ post.post_title }}</strong></a></li>
                 {% endif %}
             {% endfor %}
             </ul>
