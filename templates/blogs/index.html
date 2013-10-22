@@ -26,10 +26,8 @@
             Hier finden Sie ...<br />......<br />.....<br />.....<br />.....<br />viel Spass beim stöbern...<br />
             </div>
             <div class="right">
-            archive 2013 <br />
-            archive 2014<br />
-            archive <br />
-            archive <br />
+            <a href = "{% url 'blogs:post_year_archive' year=2013 %}">archive 2013<a/> <br />
+            <a href = "{% url 'blogs:post_year_archive' year=2014 %}">archive 2014<a/> <br />
             </div>
             <br /><br /> 
          <div style="text-align:left; text-decoration:underline"><strong>Blogbeiträge:</strong></div>
@@ -39,7 +37,7 @@
             <ul>
             {% for post in posts %}
                 {% if post.is_active %}
-                <li><a href = "{% url 'blogs:detail' post.id %}"><em>{{ post.pub_date|date:"d.M.Y - H:i" }}</em> &nbsp;&nbsp; <strong>{{ post.post_title }}</strong></a></li>
+                <li><a href = "{% url 'blogs:detail' post.id %}"><em>{{ post.pub_date|date:"d.m.y - H:i" }}</em> &nbsp;&nbsp; <strong>{{ post.post_title }}</strong></a></li>
                 {% endif %}
             {% endfor %}
             </ul>
@@ -80,7 +78,7 @@
                     </span>
                 </div>
             </div>
-            <a href = "{% url 'blogs:post_year_archive' year=2012 %}">archive 2013<a/>
+            
         </div>   
     </body>
 </html>
