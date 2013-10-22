@@ -1,5 +1,6 @@
 html body {
     background-color:gray;
+    background: repeat;
 }
 
 p  {
@@ -17,11 +18,9 @@ div.row  {
 
 div.sidebar  {
     color: black;
-    
     display:block;
-    position: relative;
     margin-left: 10px;
-    position:static; top:80px; right:230px;
+    position:relative; top:-200px; left:1000px;
     
 }
 
