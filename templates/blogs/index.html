@@ -1,41 +1,49 @@
+{% load staticfiles %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" style="background-color: grey">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     
     <head>
         <title>Lamins Blogpage</title>
     </head>
     
-    <body style="background-color: grey">
-        {% load staticfiles %}
+    <body>
+        
 
         <link rel="stylesheet" type="text/css" href="{% static 'blogs/style.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'blogs/foundation.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'blogs/foundation.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'blogs/normalize.css' %}" />
-
-        <div class="row" style="background-color: white">
-            <div style= "text-align: center;" class="large-12 columns">
-                <h1>Lamins Blog</h1>
+        
+        <div class="row">
+            <div class="haupttitel">
+                <div class="large-12 columns">
+                    <h2>Lamins Blog</h2>
+                </div>
+                <hr>
             </div>
-            <hr>
         </div>
-        <div class="sidebar">
-                <a href = "{% url 'blogs:post_year_archive' year=2013 %}">archive 2013<a/> <br />
-                <a href = "{% url 'blogs:post_year_archive' year=2014 %}">archive 2014<a/> <br />
-                <a href = "{% url 'blogs:post_month_archive' month='oct' year=2013  %}">archive Oktober 2013<a/> <br />
-            </div>
+        
         <br>
-        <div class="row"style="background-color: white"> 
+        <div class="row"> 
             <div> 
                 <br /><p>Herzlich willkommen auf meiner Blogseite.<br />
                 Hier finden Sie ...<br />......<br />.....<br />.....<br />.....<br />
                 viel Spass beim stöbern...</p><br />
             </div>
+            
+            <div class="sidebar">
+                        <ul>
+                        <li><a href = "{% url 'blogs:post_year_archive' year=2013 %}">archive 2013<a/></li>
+                        <li><a href = "{% url 'blogs:post_year_archive' year=2014 %}">archive 2014<a/></li>
+                        <li><a href = "{% url 'blogs:post_month_archive' month='oct' year=2013  %}">archive Oktober 2013<a/></li>
+                        </ul>
+                    </div>
+            
             <br /> 
-            <div style="text-align:left; text-decoration:underline">
-                <p><strong>Blogbeiträge:</strong></p>
-            </div>
+                <div class="sub" style="text-align:left; text-decoration:underline">
+                    <h3>Blogbeiträge:</h3>
+                </div>
             <br>
             <div class="large-12 large-uncentered columns">
                 {% if posts %}
@@ -45,7 +53,7 @@
                             <li>
                                 <a href = "{% url 'blogs:detail' post.id %}">
                                 <em>{{ post.pub_date|date:"d.m.y - H:i" }}</em> &nbsp;&nbsp; 
-                                <strong>{{ post.post_title }}</strong></a>
+                                <p><strong>{{ post.post_title }}</strong></p></a>
                             </li>
                         {% endif %}
                     {% endfor %}
@@ -53,25 +61,10 @@
                 {% else %}
                     <p>No posts are available.</p>
                 {% endif %}
-            </div>
-            <div class="small-9 small-left large-uncentered columns show-for-small">
-                {% if posts %}
-                    <ul>
-                    {% for post in posts %}
-                        {% if post.is_active %}
-                            <li><a href = "{% url 'blogs:detail' post.id %}"> &nbsp;&nbsp; 
-                            <strong>{{ post.post_title }}</strong></a></li>
-                        {% endif %}
-                    {% endfor %}
-                    </ul>
-                {% else %}
-                    <p>No posts are available.</p>
-                {% endif %}
-            </div>
-        
+            </div>       
         </div>
         <div class="row">
-            <div class="small-5 small-centered columns">
+            <div class="large-5 large-centered columns">
                 <div style="text-align: center" class="pagination">
                     <span class="step-links">
                         {% if posts.has_previous %}
@@ -87,6 +80,9 @@
                         {% endif %}
                     </span>
                 </div>
+                
+                    
+               
             </div>
         </div>   
     </body>

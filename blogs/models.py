@@ -10,7 +10,13 @@ class Post(models.Model):
     is_active = models.BooleanField()
     
     def __unicode__(self):
-        return self.post_title   
+        return self.post_title
+        
+    
+class Meta:
+    ordering = ['-pub_date']
+
+   
         
     
 class Image(models.Model):

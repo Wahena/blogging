@@ -1,3 +1,38 @@
-li a {
-    color: green;
+html body {
+    background-color:gray;
+}
+
+p  {
+    color: black;
+}
+
+div.sub  {
+    color: black;
+}
+
+div.row  {
+    background-color: white;
+    padding-left: 10px;
+}
+
+div.sidebar  {
+    color: black;
+    
+    display:block;
+    position: relative;
+    margin-left: 10px;
+    position:static; top:80px; right:230px;
+    
+}
+
+div.haupttitel  {
+    color: black;
+    background-color: white;
+    text-align: center;
+    
+}
+
+div.haupttitel  {
+    color: black;
+    background-color: white;
 }
