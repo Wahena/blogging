@@ -32,6 +32,7 @@ class PostYearArchiveView(YearArchiveView):
     queryset = Post.objects.filter(is_active=True)
     date_field = "pub_date"
     make_object_list = True
+    allow_future = True
 
  
 class PostMonthArchiveView(MonthArchiveView):

@@ -1,7 +1,7 @@
 
 
 <div>
-    <h1>All Posts for {{ month|date:"F" }}</h1>
+    <h1>All Posts for {{ month|date:"F - Y" }}</h1>
     {% for obj in object_list %}
         <p>
             <a href = "{% url 'blogs:detail' obj.id %}">{{ obj.pub_date|date:"d.m - H:i" }} - <strong>{{ obj.post_title }}</strong></a>

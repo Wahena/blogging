@@ -73,6 +73,7 @@ html {
     -webkit-text-size-adjust: 100%; /* 4 */
 }
 
+
 /**
  * Remove default margin.
  */
@@ -145,11 +146,11 @@ dfn {
  * Address differences between Firefox and other browsers.
  */
 
-hr {
+/*hr {
     -moz-box-sizing: content-box;
     box-sizing: content-box;
     height: 0;
-}
+}*/
 
 /**
  * Address styling not present in IE 8/9.
