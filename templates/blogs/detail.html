@@ -15,23 +15,26 @@
         <link rel="stylesheet" type="text/css" href="{% static 'blogs/normalize.css' %}" />
 
         <div class="row">
-          <div class="small-2 large-3 columns">&nbsp;</div>
-          <div style= "text-align: center" class="small-8 large-6 columns"><h1>{{ post.post_title }}</h1></div>
-          <hr>
-          <div class="small-2 large-3 columns">&nbsp;</div>
+          
+            <div style= "text-align: center" class=large-12 columns">
+                <h1>{{ post.post_title }}</h1>
+            </div>
+            <hr>
+         
         </div>
         <br>
         <div class="row"> 
-            <p>{{ post.post_text|safe}}</p>
-        
-            <br />
-            {% for image in post.images.all %}
-                <li>
-                <a href = '{{ image.image.url }}' target="_blank"><img src="{{ image.image.url }}" 
-                alt="" width="200" height="100" />{{ image.image_title }}</a> 
-                </li>
-            {% endfor %}
-            <br />
+            <div class="large 12 columns">
+                <p>{{ post.post_text|safe}}</p>
+                <br />
+                {% for image in post.images.all %}
+                    <li>
+                    <a href = '{{ image.image.url }}' target="_blank"><img src="{{ image.image.url }}" 
+                    alt="" width="200" height="100" />{{ image.image_title }}</a> 
+                    </li>
+                {% endfor %}
+                <br />
+            </div> 
         </div>
         <br />
         <div class="row">
