@@ -1,11 +1,10 @@
-
 {% load staticfiles %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     
     <head>
-        <title>{% block pagetitle %}Lamins Blogpage{% endblock %}</title>
+        <title> {% block pagetitel %} Pagename {% endblock %} </title>
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     </head>
@@ -21,46 +20,46 @@
         <div class="row">
             <div class="haupttitel">
                 <div class="large-12 columns">
-                {%block title%}
-                    <h2>Lamins Blog</h2>
-                {%endblock%}
+                {% block titel %}
+                    sometitle
+                {% endblock %}
                 </div>
                 <hr>
             </div>
         </div>
         <br>
         
-        <div class="row"style="background-color:blue"> 
+        <div class="row"> 
             <div class="large-7 columns">
                 <div class="row">
                     <div class="large-12 columns">
                         {% block content %} 
-                            oberer inhalt
+                            upper content left from sidebar
                         {% endblock %}
                     </div>
                     <hr>
                 </div>
                 <div class="row">
                     <div class="sub">
-                        {%block subtitel%}
-                        
-                        {%endblock%}
+                        {% block subtitel %}
+                        untertitel
+                        {% endblock %}
                     </div>
                 </div>
                 <div class="row">
                     <div class="large-12 large-uncentered columns">
                     {% block low%}
-                    
-                    {%endblock %}
+                    abhängig von untertitel
+                    {% endblock %}
                 </div>
             </div>
         </div>
         
         <div class="large-4 large-offset-1 columns">
             <div class="row">
-                <div class="sidebar large-12 columns"><h3>Archive</h3>
+                <div class="sidebar large-12 columns">{% block sidetitel %}<h3>Archive</h3>{% endblock %}
                     {% block sidebar %}
-                        displayed left
+                        sidebar displayed left from content
                     {% endblock %}
                 </div>
             </div>
@@ -70,22 +69,8 @@
 
     <div class="row">
         <div class="large-12 large-centered columns">
-        {%block bottom%}
-            <div style="text-align: center" class="pagination">
-                <span class="step-links">
-                    {% if posts.has_previous %}
-                        <a href="?page={{ posts.previous_page_number }}">&lt;&lt;&lt;previous</a>
-                    {% endif %}
-
-                    <span class="current">
-                        Page {{ posts.number }} of {{ posts.paginator.num_pages }}
-                    </span>
-
-                    {% if posts.has_next %}
-                        <a href="?page={{ posts.next_page_number }}">next&gt;&gt;&gt;</a>
-                    {% endif %}
-                </span>
-            </div>
+        {% block bottom %}
+            some side scroll or back to ... page stuff
         {% endblock %}
         </div>
     </div>   
