@@ -14,17 +14,19 @@
 {% block low %}
     {% for image in post.images.all %}
         <li>
+        <!--
         <a href = '{{ image.image.url }}' target="_blank"><img src="{{ image.image.url }}" 
         alt="" width="200" height="100" />{{ image.image_title }}</a> 
-        <a class="grouped_elements" rel="gallery" href='{{ image.image.url }}'><img src="{{ image.image.url }}" 
+        -->
+        <a class="pics" rel="gallery" href='{{ image.image.url }}'><img src="{{ image.image.url }}" 
         alt="" width="200" height="100" />{{ image.image_title }}</a>
         </li>
     {% endfor %}
     <br />
     <script type="text/javascript">
-  $(document).ready(function(){
-    $('a[rel="gallery"]').fancybox();
-  });
+    $(document).ready(function(){
+        $('a[rel="gallery"]').fancybox();
+    });
 </script>
 {% endblock %}
             {% block bottom %}
