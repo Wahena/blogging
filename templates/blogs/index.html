@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 
-
 {% block pagetitel %}
     Lamins Blogpage
 {% endblock %}
@@ -11,7 +10,7 @@
 
 {% block content %} 
     <br /><p>Herzlich willkommen auf meiner Blogseite.<br />
-    Hier finden Sie ...<br />.....<br />.....<br />.....<br />.....<br />
+    Hier finden Sie ...<br />.....<br />.....<br />.....<br />.....<br />.....<br />.....<br />.....<br />
     viel Spass beim stöbern...</p>
 {%endblock%}
 
@@ -26,7 +25,7 @@
             {% if post.is_active %}
                 <li>
                     <a href = "{% url 'blogs:detail' post.id %}">
-                    <em>{{ post.pub_date|date:"d.m.y - H:i" }}</em> &nbsp;&nbsp; 
+                    <em>{{ post.pub_date|date:"d.m.y - H:i" }}</em> 
                     <p><strong>{{ post.post_title }}</strong></p></a>
                 </li>
             {% endif %}
@@ -40,63 +39,9 @@
 {% block sidetitel %}
     <h3>Archive</h3>
 {% endblock %}
-
-{%block sidebar%}
-                    
-        <fieldset> <legend>Jahresarchive</legend>
-            <select name="year">
-                <option value="2013">Archiv-2013</option>
-                <option value="2014">Archiv-2014</option>
-            </select>
-            <input type="button" value="GO" class="yearbutton">
-        </fieldset>
-        <fieldset> <legend>Monatsarchive</legend>
-            <select name="yearselection">
-                <option value="2013">Archiv-2013</option>
-                <option value="2014">Archiv-2014</option>
-            </select>
-            <select name="month">
-                <option value="jan">Januar</option>
-                <option value="feb">Februar</option>
-                <option value="mar">März</option>
-                <option value="apr">April</option>
-                <option value="mai">Mai</option>
-                <option value="jun">Juni</option>
-                <option value="jul">Juli</option>
-                <option value="aug">August</option>
-                <option value="sep">September</option>
-                <option value="oct">Oktober</option>
-                <option value="nov">November</option>
-                <option value="dec">Dezember</option>
-            </select>
-            <input type="button" value="GO" class="monthbutton"/>
-        </fieldset>
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $('.yearbutton').on('click', function(){
-            var year = $('select[name=year]').val();
-            window.location.href = "{% url 'blogs:index' %}archive/"+year;
-        });
-    });
-    </script>
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $('.monthbutton').on('click', function(){
-            var year = $('select[name=yearselection]').val();
-            var month = $('select[name=month]').val();
-            window.location.href = "{% url 'blogs:index' %}archive/"+year +"/"+month;
-        });
-    });
-    </script>
-    <!--
-    <li><a href = "{% url 'blogs:post_year_archive' year=2013 %}">archive 2013<a/></li>
-    <li><a href = "{% url 'blogs:post_year_archive' year=2014 %}">archive 2014<a/></li>
-    <li><a href = "{% url 'blogs:post_month_archive' month='oct' year=2013  %}">archive Oktober 2013<a/></li>
-    -->
-{% endblock %}
-
+<hr>
 {% block bottom %}
-    <div style="text-align: center" class="pagination">
+    <div class="pagination"><br />
         <span class="step-links">
             {% if posts.has_previous %}
                 <a href="?page={{ posts.previous_page_number }}">&lt;&lt;&lt;previous</a>

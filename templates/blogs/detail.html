@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block pagetitel %}
-    
+    {{ post.post_title }}
 {% endblock %}
     
 {% block titel %}
@@ -8,29 +8,30 @@
 {% endblock %}
 
 {% block content %}
+<br />
     <p>{{ post.post_text|safe}}</p><br />
+{% endblock %}
+
+{% block subtitel %}
+    <p>Bilder</p><br />
 {% endblock %}
 
 {% block low %}
     {% for image in post.images.all %}
         <li>
-        <!--
-        <a href = '{{ image.image.url }}' target="_blank"><img src="{{ image.image.url }}" 
-        alt="" width="200" height="100" />{{ image.image_title }}</a> 
-        -->
         <a class="pics" rel="gallery" href='{{ image.image.url }}'><img src="{{ image.image.url }}" 
         alt="" width="200" height="100" />{{ image.image_title }}</a>
         </li>
     {% endfor %}
     <br />
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $('a[rel="gallery"]').fancybox();
-    });
-</script>
 {% endblock %}
-            {% block bottom %}
-            <a href ={% url 'blogs:index'%}>back to main page</a>
-            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-            {% endblock %}
+
+{% block bottom %}
+<div class="back"><br />
+    <a href ={% url 'blogs:index'%}>back to main page</a>
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+</div>
+{% endblock %}
      

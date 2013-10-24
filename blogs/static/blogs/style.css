@@ -1,54 +1,50 @@
-/*
- html body {
+html, body {
     background-color:gray;
-    
 }
 
 p  {
     color: black;
 }
 
-hr  {
-   background-color: blue;
-   border-color: blue;
-   color:blue;
-   border:3px;
-   display:block;
-   
-   
+hr {
+    border-color: blue;
+}
+
+div.low  {
+    color: black;
+    text-align:left; 
+    margin-left:10px;
 }
 
 div.sub  {
     color: black;
     text-align:left; 
-    text-decoration:underline
+    text-decoration:underline;
+    margin-left:10px;
 }
 
 div.row  {
+    color: black;
     background-color: white;
-    /*padding-left: 10px;
-    padding-bottom:10px;
-    margin-top:10px;*/
-}
-
-div.sidebar  {
-    background-color: white;
-    display:block;
-    /*margin-right: 40px;
-    position:static; 
-    float:right;*/
-    
 }
 
 div.haupttitel  {
     color: black;
     background-color: white;
     text-align: center;
-   /* margin-bottom:10px;*/
+    text-decoration:underline;
+    
 }
 
 div.pagination  {
     color: black;
     background-color: white;
-    vertical-align: center;
+    text-align: center;
 }
+
+div.back  {
+    color: black;
+    background-color: white;
+    text-align: center;
+}
+

@@ -1,69 +1,75 @@
 {% load staticfiles %}
+{% load markup %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     
     <head>
         <title> {% block pagetitel %} Pagename {% endblock %} </title>
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script type="text/javascript" href="{% static 'blogs/fancybox/fancybox/jquery.fancybox-1.3.4.pack.js' %}"></script>
-        <script type="text/javascript" src="{% static 'blogs/fancybox/fancybox/jquery.mousewheel-3.0.4.pack.js' %}"></script>
-        
-    </head>
-    
-    <body>
-        
         
         <link type="text/css" rel="stylesheet" href="{% static 'blogs/fancybox/fancybox/jquery.fancybox-1.3.4.css'%}" media="screen" />
-        <link rel="stylesheet" type="text/css" href="{% static 'blogs/style.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'blogs/foundation.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'blogs/foundation.min.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'blogs/normalize.css' %}" />
-        
+        <link rel="stylesheet" type="text/css" href="{% static 'blogs/style.css' %}" />
+                
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="{% static 'blogs/fancybox/fancybox/jquery.fancybox-1.3.4.pack.js' %}"></script>
+        <script type="text/javascript" src="{% static 'blogs/fancybox/fancybox/jquery.mousewheel-3.0.4.pack.js' %}"></script>
+        <script type="text/javascript" src="{% static 'blogs/app.js' %}"></script>
+    </head>
+    
+    <body>
+        <br />
         <div class="row">
-            <div class="haupttitel">
-                <div class="large-12 columns">
-                {% block titel %}
-                    maintitle
-                {% endblock %}
+            <div class="large-12 columns">
+                <div class="haupttitel">    
+                    {% block titel %}
+                        maintitle
+                    {% endblock %}
                 </div>
-                <hr>
+                
             </div>
         </div>
-        <br>
+        <br />
         
         <div class="row"> 
             <div class="large-7 columns">
                 <div class="row">
                     <div class="large-12 columns">
-                        {% block content %} 
-                            upper content left from sidebar
-                        {% endblock %}
+                        <div class="content">
+                            {% block content %} 
+                                upper content left from sidebar
+                            {% endblock %}
+                        </div>    
                     </div>
-                    <hr>
-                </div>
+                </div><hr>
                 <div class="row">
                     <div class="sub">
                         {% block subtitel %}
-                        
+                            subtitle
                         {% endblock %}
                     </div>
                 </div>
                 <div class="row">
                     <div class="large-12 large-uncentered columns">
-                    {% block low%}
-                    abhängig von untertitel
-                    {% endblock %}
+                        <div class="low">
+                            {% block low%}
+                                abhängig von untertitel
+                            {% endblock %}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        
         
         <div class="large-4 large-offset-1 columns">
             <div class="row">
                 <div class="sidebar large-12 columns">{% block sidetitel %}<h3>Archive</h3>{% endblock %}
                     {% block sidebar %}
-                        <fieldset> <legend>Jahresarchive</legend>
+                    
+        <fieldset> <legend>Jahresarchive</legend>
             <select name="year">
                 <option value="2013">Archiv-2013</option>
                 <option value="2014">Archiv-2014</option>
@@ -90,35 +96,31 @@
                 <option value="dec">Dezember</option>
             </select>
             <input type="button" value="GO" class="monthbutton"/>
-        </fieldset>
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $('.yearbutton').on('click', function(){
-            var year = $('select[name=year]').val();
-            window.location.href = "{% url 'blogs:index' %}archive/"+year;
-        });
-    });
-    </script>
-    <script type="text/javascript">
-    $(document).ready(function(){
-        $('.monthbutton').on('click', function(){
-            var year = $('select[name=yearselection]').val();
-            var month = $('select[name=month]').val();
-            window.location.href = "{% url 'blogs:index' %}archive/"+year +"/"+month;
-        });
-    });
-    </script>
-    <!--
-    <li><a href = "{% url 'blogs:post_year_archive' year=2013 %}">archive 2013<a/></li>
-    <li><a href = "{% url 'blogs:post_year_archive' year=2014 %}">archive 2014<a/></li>
-    <li><a href = "{% url 'blogs:post_month_archive' month='oct' year=2013  %}">archive Oktober 2013<a/></li>
-    -->
-                    {% endblock %}
+            </fieldset>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $('.yearbutton').on('click', function(){
+                            var year = $('select[name=year]').val();
+                            window.location.href = "{% url 'blogs:index' %}archive/"+year;
+                        });
+                    });
+                </script>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $('.monthbutton').on('click', function(){
+                            var year = $('select[name=yearselection]').val();
+                            var month = $('select[name=month]').val();
+                            window.location.href = "{% url 'blogs:index' %}archive/"+year +"/"+month;
+                        });
+                    });
+                </script>
+ {% endblock %}
                 </div>
             </div>
         </div>
-       <hr> 
+        <hr>
     </div>
+    <br />
 
     <div class="row">
         <div class="large-12 large-centered columns">
@@ -126,7 +128,9 @@
             some side scroll or back to ... page stuff
         {% endblock %}
         </div>
-    </div>   
+        <br />
+    </div>
+    <br />
     </body>
 </html>
      

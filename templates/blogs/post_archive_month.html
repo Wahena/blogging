@@ -1,11 +1,32 @@
+{% extends "base.html" %}
 
+{% block pagetitel %}
+    All Posts for {{ month|date:"F - Y" }}
+{% endblock %}
 
-<div>
+{% block titel %}
     <h1>All Posts for {{ month|date:"F - Y" }}</h1>
+{% endblock %}
+
+{% block content%}
+
+{% endblock %}
+
+{% block subtitel %}
+    <h3>Blogbeiträge:</h3>
+{% endblock %}
+
+{% block low %}
+
     {% for obj in object_list %}
-        <p>
-            <a href = "{% url 'blogs:detail' obj.id %}">{{ obj.pub_date|date:"d.m - H:i" }} - <strong>{{ obj.post_title }}</strong></a>
-        </p>
+        
+            <a href = "{% url 'blogs:detail' obj.id %}">{{ obj.pub_date|date:"d.m - H:i" }} - <p><strong>{{ obj.post_title }}</strong></p></a>
+       
     {% endfor %}
+{% endblock %}
+    
+{% block bottom %}
+<br /><div class="back">
+    <a href ={% url 'blogs:index'%}>back to main page</a>
 </div>
-<a href ={% url 'blogs:index'%}>back to main page</a>
+{% endblock %}
