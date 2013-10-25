@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load blog_tags %}
+
 {% block pagetitel %}
     {{ post.post_title }}
 {% endblock %}
@@ -8,8 +10,8 @@
 {% endblock %}
 
 {% block content %}
-<br />
-    <p>{{ post.post_text|safe}}</p><br />
+    <br />
+    <p>{{ post.post_text|md_to_html|safe}}</p><br />
 {% endblock %}
 
 {% block subtitel %}
@@ -19,7 +21,7 @@
 {% block low %}
     {% for image in post.images.all %}
         <li>
-        <a class="pics" rel="gallery" href='{{ image.image.url }}'><img src="{{ image.image.url }}" 
+        <a class="pics" rel="gallery" href='{{ image.image.url }}'><img src="{{ image.image.url }}" title="{{ image.image_title }}" 
         alt="" width="200" height="100" />{{ image.image_title }}</a>
         </li>
     {% endfor %}
@@ -27,11 +29,11 @@
 {% endblock %}
 
 {% block bottom %}
-<div class="back"><br />
-    <a href ={% url 'blogs:index'%}>back to main page</a>
-    {% if error_message %}
-        <p><strong>{{ error_message }}</strong></p>
-    {% endif %}
-</div>
+    <div class="back">
+        <a href ={% url 'blogs:index'%}>back to main page</a>
+        {% if error_message %}
+            <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+    </div>
 {% endblock %}
      

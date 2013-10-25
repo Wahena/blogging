@@ -17,16 +17,13 @@
 {% endblock %}
 
 {% block low %}
-
-    {% for obj in object_list %}
-        
-            <a href = "{% url 'blogs:detail' obj.id %}">{{ obj.pub_date|date:"d.m - H:i" }} - <p><strong>{{ obj.post_title }}</strong></p></a>
-       
+    {% for obj in object_list %}        
+            <a href = "{% url 'blogs:detail' obj.id %}">{{ obj.pub_date|date:"d.m - H:i" }} - <p><strong>{{ obj.post_title }}</strong></p></a>       
     {% endfor %}
 {% endblock %}
     
 {% block bottom %}
-<br /><div class="back">
-    <a href ={% url 'blogs:index'%}>back to main page</a>
-</div>
+    <div class="back">
+        <a href ={% url 'blogs:index'%}>back to main page</a>
+    </div>
 {% endblock %}

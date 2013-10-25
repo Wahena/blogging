@@ -1,8 +1,8 @@
-import datetime
+import datetime, markdown
 from django.db import models
 from django.utils import timezone
 
-# Create your models here.
+
 class Post(models.Model):
     post_title = models.CharField(max_length=200)
     post_text = models.TextField()
@@ -12,13 +12,14 @@ class Post(models.Model):
     def __unicode__(self):
         return self.post_title
         
-    
-class Meta:
-    ordering = ['-pub_date']
-
-   
+    @property
+    def post_html(self):
+        return markdown.markdown(self.post_text)
         
-    
+    class Meta:
+        ordering = ['pub_date']
+
+
 class Image(models.Model):
     post = models.ForeignKey(Post, related_name="images")
     image = models.ImageField(upload_to='Images')

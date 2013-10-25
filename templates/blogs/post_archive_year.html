@@ -9,6 +9,7 @@
 {% endblock %}
 
 {% block content%}
+
 {% endblock %}
 
 {% block subtitel %}
@@ -18,13 +19,12 @@
 {% block low %}
     {% for obj in object_list %}
         <br />
-            <a href = "{% url 'blogs:detail' obj.id %}">{{ obj.pub_date|date:"d.m.y - H:i" }} - <p><strong>{{ obj.post_title }}</strong></p></a>
-        
+            <a href = "{% url 'blogs:detail' obj.id %}">{{ obj.pub_date|date:"d.m.y - H:i" }} - <p><strong>{{ obj.post_title }}</strong></p></a>       
     {% endfor %}
 {% endblock %}
     
 {% block bottom %}
-<br /><div class="back">
-    <a href ={% url 'blogs:index'%}>back to main page</a>
-</div>
+    <div class="back">
+        <a href ={% url 'blogs:index'%}>back to main page</a>
+    </div>
 {% endblock %}

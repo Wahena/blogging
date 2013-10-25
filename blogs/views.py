@@ -29,14 +29,14 @@ def listing(request):
     
     
 class PostYearArchiveView(YearArchiveView):
-    queryset = Post.objects.filter(is_active=True)
+    queryset = Post.objects.filter(is_active=True).order_by('pub_date')
     date_field = "pub_date"
     make_object_list = True
     allow_future = True
 
  
 class PostMonthArchiveView(MonthArchiveView):
-    queryset = Post.objects.filter(is_active=True)
+    queryset = Post.objects.filter(is_active=True).order_by('pub_date').reverse()
     date_field = "pub_date"
     make_object_list = True
 
